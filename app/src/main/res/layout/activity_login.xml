@@ -55,7 +55,7 @@
         app:layout_constraintTop_toBottomOf="@+id/email_input_loginform" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/login_button_loginform"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginTop="32dp"
@@ -65,6 +65,19 @@
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="@+id/password_input_loginform"
         app:layout_constraintTop_toBottomOf="@+id/password_input_loginform" />
+
+    <TextView
+        android:id="@+id/back_to_main_link_loginform"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:textColor="@color/purple_500"
+        android:textStyle="bold"
+        android:text="back to registration"
+        app:layout_constraintEnd_toEndOf="@+id/login_button_loginform"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/login_button_loginform"
+        app:layout_constraintTop_toBottomOf="@+id/login_button_loginform" />
 
 
 </android.support.constraint.ConstraintLayout>
