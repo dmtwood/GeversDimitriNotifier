@@ -1,5 +1,6 @@
 package be.dimitrigevers.android.geversdimitrinotifier
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -26,7 +27,20 @@ class MainActivity : AppCompatActivity() {
             Log.d("MainActivity", "Username: " + username)
             Log.d("MainActivity", "Email: " + emailstring)
             Log.d("MainActivity", "Password: " + password_string)
+        }
+
+        login_link_registerform.setOnClickListener {
+            // launch login activity
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
 
         }
+
     }
 }
+
+// XML sources
+// Rounded input fields on activity_main.xml & activity_login.xml
+// https://stackoverflow.com/questions/3646415/how-to-create-edittext-with-rounded-corners
+
+
