@@ -7,8 +7,8 @@
     android:background="#FFEB3B"
     tools:context=".MainActivity" >
 
-    <TextView
-        android:id="@+id/editText"
+    <EditText
+        android:id="@+id/username_edittext_registerform"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
@@ -21,56 +21,78 @@
         android:hint="Name"
         android:paddingLeft="20dp"
         android:textSize="20sp"
-        android:textAlignment="center"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        android:gravity="center_horizontal" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2"/>
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/email_input_registerform"
         android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="40dp"
         android:background="@color/white"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:paddingLeft="20dp"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/editText"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editText"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintEnd_toEndOf="@+id/username_edittext_registerform"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/username_edittext_registerform"
+        app:layout_constraintTop_toBottomOf="@+id/username_edittext_registerform" />
 
     <EditText
-        android:id="@+id/editTextNumberPassword"
+        android:id="@+id/password_input_registerform"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginTop="36dp"
         android:background="@color/white"
         android:ems="10"
         android:hint="Password"
-        android:inputType="numberPassword"
-
+        android:inputType="textPassword"
         android:paddingLeft="20dp"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintEnd_toEndOf="@+id/email_input_registerform"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
+        app:layout_constraintStart_toStartOf="@+id/email_input_registerform"
+        app:layout_constraintTop_toBottomOf="@+id/email_input_registerform" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="100dp"
         android:layout_height="34dp"
         android:layout_marginTop="16dp"
-        android:text="Log in"
+        android:gravity="center_horizontal"
+        android:text="Register"
+        android:textAlignment="center"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintBottom_toTopOf="@+id/username_edittext_registerform"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/login_link_registerform"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Already registered? Log in here"
+        app:layout_constraintEnd_toEndOf="@+id/register_button_registerform"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/register_button_registerform"
+        app:layout_constraintTop_toBottomOf="@+id/register_button_registerform" />
+
+    <Button
+        android:id="@+id/register_button_registerform"
+        android:layout_width="381dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="40dp"
+        android:text="Register"
+        app:layout_constraintEnd_toEndOf="@+id/password_input_registerform"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/password_input_registerform"
+        app:layout_constraintTop_toBottomOf="@+id/password_input_registerform" />
 </android.support.constraint.ConstraintLayout>
