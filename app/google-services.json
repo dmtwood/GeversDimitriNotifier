@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "937251173242",
+    "project_id": "geversdimitrinotifier",
+    "storage_bucket": "geversdimitrinotifier.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:937251173242:android:2fabff4d2d38c1fbf09cc3",
+        "android_client_info": {
+          "package_name": "be.dimitrigevers.android.geversdimitrinotifier"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "937251173242-1vt9e7ubobvk67cb7fp3lt8gbu163unq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8EWWbkb9EOALSJc4nADHsqsTkRoTzhxM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "937251173242-1vt9e7ubobvk67cb7fp3lt8gbu163unq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

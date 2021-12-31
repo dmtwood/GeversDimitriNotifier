@@ -1,0 +1,35 @@
+PS E:\lesmateriaal\android\GeversDimitriNotifier> .\gradlew signinReport
+Starting a Gradle Daemon, 1 incompatible Daemon could not be reused, use --status for details
+
+> Configure project :app
+Warning: The 'kotlin-android-extensions' Gradle plugin is deprecated. Please use this migration guide (https://goo.gle/kotlin-android-extensions-deprecation) to start working with View Binding (https://developer.android.com/topic/libraries/view-binding) and the 'kotlin-parcelize' plugin.
+
+> Task :app:signingReport
+Variant: debug
+Config: debug
+Store: C:\Users\dimit\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: FD:1D:F4:08:99:8B:DD:45:92:BA:31:B6:7E:99:D0:53
+SHA1: 4F:78:B3:6D:61:B8:82:56:77:6D:B9:45:92:26:E8:9B:18:0C:C4:0D
+SHA-256: 1C:E7:D6:28:AB:CC:3E:7E:D5:9E:7B:58:A2:36:C5:4A:11:F2:4A:86:19:ED:17:2E:FE:8F:A8:11:52:D1:26:46
+Valid until: donderdag 5 januari 2051
+----------
+Variant: release
+Config: none
+----------
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\dimit\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: FD:1D:F4:08:99:8B:DD:45:92:BA:31:B6:7E:99:D0:53
+SHA1: 4F:78:B3:6D:61:B8:82:56:77:6D:B9:45:92:26:E8:9B:18:0C:C4:0D
+SHA-256: 1C:E7:D6:28:AB:CC:3E:7E:D5:9E:7B:58:A2:36:C5:4A:11:F2:4A:86:19:ED:17:2E:FE:8F:A8:11:52:D1:26:46
+Valid until: donderdag 5 januari 2051
+----------
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 8.0.
+Use '--warning-mode all' to show the individual deprecation warnings.
+See https://docs.gradle.org/7.0.2/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD SUCCESSFUL in 23s
+1 actionable task: 1 executed
