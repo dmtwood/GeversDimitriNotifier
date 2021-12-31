@@ -5,6 +5,8 @@ import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.widget.EditText
+import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -22,6 +24,19 @@ class LoginActivity : AppCompatActivity() {
 
             Log.d("MainActivity", "Email: " + emailstring)
             Log.d("MainActivity", "Password: " + password_string)
+
+            FirebaseAuth.getInstance().signInWithEmailAndPassword(emailstring, password_string)
+                .addOnCompleteListener {
+                    if (!it.isSuccessful)
+                        return@addOnCompleteListener
+                    Log.d("Main", "User logged in with uid: ${it.result?.user?.uid}")
+                    Toast.makeText(this, "Logged in succesfully", Toast.LENGTH_SHORT).show()
+
+                }
+                .addOnFailureListener {
+                    Log.d("Main", "Login failed")
+                    Toast.makeText(this, "Login failed", Toast.LENGTH_SHORT).show()
+                }
         }
 
         back_to_main_link_loginform.setOnClickListener {

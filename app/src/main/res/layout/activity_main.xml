@@ -78,7 +78,7 @@
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginTop="36dp"
-        android:background="@android:color/holo_blue_dark"
+        android:background="@drawable/button_style"
         android:text="Sign up"
         app:layout_constraintEnd_toEndOf="@+id/password_input_registerform"
         app:layout_constraintHorizontal_bias="0.0"

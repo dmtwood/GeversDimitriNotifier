@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -24,27 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         val registerButton = findViewById<Button>(R.id.register_button_registerform)
         registerButton.setOnClickListener {
-
-            /* --- RETRIEVE USER CREDENTIALS FROM UI --- */
-            // via synthetic view, not recommended anymore
-            val username = username_edittext_registerform.text.toString()
-            val email = findViewById<EditText>(R.id.email_input_registerform)
-            val email_input = email.getText().toString()
-            val password = findViewById<EditText>(R.id.password_input_registerform)
-            val password_input = password.getText().toString()
-
-            // TESTING PURPOSE - DELETE IN PRODUCTION ENVIRONMENT
-            Log.d("MainActivity", "Username: " + username)
-            Log.d("MainActivity", "Email: " + email_input)
-            Log.d("MainActivity", "Password: " + password_input)
-
-            /* --- CREATE FIREBASE AUTHENTICATION --- */
-            FirebaseAuth.getInstance().createUserWithEmailAndPassword(email_input, password_input)
-                .addOnCompleteListener {
-                    if (!it.isSuccessful)
-                        return@addOnCompleteListener
-                    Log.d("Main", "User created with uid: ${it.result?.user?.uid}")
-                }
+            register()
         }
 
         login_link_registerform.setOnClickListener {
@@ -64,6 +45,38 @@ class MainActivity : AppCompatActivity() {
         }
     }
  */
+
+    private fun register() {
+        /* --- RETRIEVE USER CREDENTIALS FROM UI --- */
+        // via synthetic view, not recommended anymore
+        val username = username_edittext_registerform.text.toString()
+        val email = findViewById<EditText>(R.id.email_input_registerform)
+        val email_input = email.getText().toString()
+        val password = findViewById<EditText>(R.id.password_input_registerform)
+        val password_input = password.getText().toString()
+
+        if (email_input.isEmpty() || password_input.isEmpty())
+            Toast.makeText(this, "Email and password (6+ chars) are required", Toast.LENGTH_SHORT).show()
+            return
+
+        // TESTING PURPOSE - DELETE IN PRODUCTION ENVIRONMENT
+        Log.d("MainActivity", "Username: " + username)
+        Log.d("MainActivity", "Email: " + email_input)
+        Log.d("MainActivity", "Password: " + password_input)
+
+        /* --- CREATE FIREBASE AUTHENTICATION --- */
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email_input, password_input)
+            .addOnCompleteListener {
+                if (!it.isSuccessful)
+                    return@addOnCompleteListener
+                Log.d("Main", "User created with uid: ${it.result?.user?.uid}")
+                Toast.makeText(this, "Created succesfully", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener{
+                Log.d("Main", "Creation failed")
+                Toast.makeText(this, "Creation failed", Toast.LENGTH_SHORT).show()
+            }
+    }
 }
 
 
