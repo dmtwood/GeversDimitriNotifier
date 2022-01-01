@@ -1,5 +1,6 @@
 package be.dimitrigevers.android.geversdimitrinotifier
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,7 +13,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
 
@@ -32,10 +33,24 @@ class MainActivity : AppCompatActivity() {
             // launch login activity
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
-        }
+            }
 
+        image_upload_button_registerform.setOnClickListener {
+
+
+            val image_intent = Intent(Intent.ACTION_PICK)
+            image_intent.type = "image/*"
+            startActivityForResult(image_intent, 0)
+        }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if ( requestCode == 0 && resultCode == Activity.RESULT_OK && data != null )
+            Log.d("MainActivity: ", "image upload selector ")
+
+    }
 /*    public override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.

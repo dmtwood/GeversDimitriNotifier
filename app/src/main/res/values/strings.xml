@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">GeversDimitriNotifier</string>
     <string name="name">Name</string>
+    <string name="register">Register</string>
+    <string name="password">Password</string>
+    <string name="image">Image</string>
+    <string name="email">Email</string>
+    <string name="already_registered_log_in_here">Already registered? Log in here</string>
+    <string name="sign_up">Sign up</string>
+    <string name="log_in">Log in</string>
+    <string name="sign_in">Sign in</string>
+    <string name="back_to_registration">back to registration</string>
 </resources>
