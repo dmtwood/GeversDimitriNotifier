@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
@@ -15,12 +14,9 @@ import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_main.*
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.ImageDecoder
 import android.net.Uri
-import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.FirebaseAuthSettings
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.UploadTask
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.io.FileDescriptor
@@ -29,6 +25,7 @@ import java.util.*
 
 
 class RegisterActivity : AppCompatActivity() {
+    val LOG_TAG = "LogRegisterActivity: "
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,10 +52,10 @@ class RegisterActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if ( requestCode == 0 && resultCode == Activity.RESULT_OK && data != null ) {
-            Log.d("MainActivity: ", "image upload selector ")
+            Log.d(LOG_TAG, "image upload selector ")
             selectedImageUri = data.data
             if (selectedImageUri == null) {
-                Log.d("MainActivity", "selected img is null")
+                Log.d(LOG_TAG, "selected img is null")
                 return
             }
             val image_bitmap = uriToBitmap(selectedImageUri!!)
@@ -96,9 +93,9 @@ class RegisterActivity : AppCompatActivity() {
                 .show()
             return
         }
-        Log.d("MainActivity", "Username: " + username)
-        Log.d("MainActivity", "Email: " + email_input)
-        Log.d("MainActivity", "Password: " + password_input)
+        Log.d(LOG_TAG, "Username: " + username)
+        Log.d(LOG_TAG, "Email: " + email_input)
+        Log.d(LOG_TAG, "Password: " + password_input)
 
         /* --- CREATE FIREBASE AUTHENTICATION --- */
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email_input, password_input)
@@ -109,7 +106,7 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.makeText(this, "Created succesfully", Toast.LENGTH_SHORT).show()
                 /* --- create second thread for uploading the image to firebase  ---*/
                 runBlocking {
-                    launch { imageToFireBase() }
+                    launch { imageToFireBaseDB() }
                 }
             }
             .addOnFailureListener{
@@ -118,39 +115,52 @@ class RegisterActivity : AppCompatActivity() {
             }
     }
 
-    private suspend fun imageToFireBase() {
+    private suspend fun imageToFireBaseDB() {
         val storageRef = FirebaseStorage.getInstance().reference
         if (selectedImageUri == null) {
-            Log.d("MainActivity", "selected img is null")
+            Log.d(LOG_TAG, "selected img is null")
             return
         }
         val imageName = UUID.randomUUID().toString()
-        /*
-        val imgRef = storageRef.child("$imageName")
-        val imagesImgRef = storageRef.child("/images/$imageName")
-
-        // While the file names are the same, the references point to different files
-        imgRef.name == imagesImgRef.name // true
-        imagesImgRef.path == imagesImgRef.path // false
-        */
-
-
         val imageRef = FirebaseStorage.getInstance().getReference("/images/$imageName")
             .putFile(
             selectedImageUri!!
         )
             .addOnSuccessListener {
-                Log.d("MainActivity", "Image upload was succesfull: ${it.metadata?.path}")
+                Log.d(LOG_TAG, "Image upload was succesfull: ${it.metadata?.path}")
+
+                userToFirebaseDB(it.toString())
             }
             .addOnFailureListener {
-                Log.d("MainActivity", "Failed to set value to database: ${it.message}")
+                Log.d(LOG_TAG, "Failed to set value to database: ${it.message}")
             }
 
-        Log.d("MainActivity", "image ref : $imageRef - sel image uri: $selectedImageUri")
+        Log.d(LOG_TAG, "image ref : $imageRef - sel image uri: $selectedImageUri")
         // storageRef.putFile(selectedImageUri!!)
     }
+
+    private fun userToFirebaseDB(user_img_uri:String) {
+        Log.d(LOG_TAG, "trying to store user to db")
+        val uid = FirebaseAuth.getInstance().uid?: ""
+        val dbReference = FirebaseDatabase.getInstance().getReference("/users/$uid")
+        val username = findViewById<EditText>(R.id.username_edittext_registerform).text.toString()
+        val userToStore = User(uid, username, user_img_uri)
+        Log.d(LOG_TAG, "trying to store user: ${userToStore.uid}")
+
+        dbReference.setValue(userToStore)
+            .addOnSuccessListener {
+                Log.d(LOG_TAG, "User saved successfully in Firestore")
+            }
+            .addOnFailureListener {
+                Log.d(LOG_TAG, "Failed to save user to database")
+            }
+        Log.d(LOG_TAG, "passed setValue to store user: ${userToStore.username}")
+
+    }
+
 }
 
+class User(val uid:String, val username:String, val user_img_uri:String )
 
 
 // XML sources
