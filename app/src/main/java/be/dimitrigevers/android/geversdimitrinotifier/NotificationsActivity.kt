@@ -32,12 +32,13 @@ class NotificationsActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.navbar_new_message -> {
-
+                val notifyIntent = Intent(this, NotifyActivity::class.java)
+                startActivity(notifyIntent)
             }
             R.id.navbar_sign_out -> {
-                val intent = Intent(this, RegisterActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
-                startActivity(intent)
+                val registerIntent = Intent(this, RegisterActivity::class.java)
+                registerIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(registerIntent)
             }
         }
         return super.onOptionsItemSelected(item)
