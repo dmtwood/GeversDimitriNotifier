@@ -68,7 +68,7 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    //TODO takes URI of the image and returns bitmap
+
     private fun uriToBitmap(selectedFileUri: Uri): Bitmap? {
         try {
             val parcelFileDescriptor = contentResolver.openFileDescriptor(selectedFileUri, "r")
@@ -136,7 +136,6 @@ class RegisterActivity : AppCompatActivity() {
                     Log.d(LOG_TAG, "Image upload succesfull at $it")
                     userToFirebaseDB(it.toString())
                 }
-
             }
             .addOnFailureListener {
                 Log.d(LOG_TAG, "Failed to set value to database: ${it.message}")
@@ -159,6 +158,13 @@ class RegisterActivity : AppCompatActivity() {
         dbReference.setValue(userToStore)
             .addOnSuccessListener {
                 Log.d(LOG_TAG, "User saved successfully in Firestore")
+
+                val notificationsIntent = Intent(this, NotificationsActivity::class.java)
+                // clear out stack
+                notificationsIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+
+
+                startActivity(notificationsIntent)
             }
             .addOnFailureListener {
                 Log.d(LOG_TAG, "Failed to save user to database")
@@ -173,7 +179,10 @@ class User(val uid:String, val userName:String, val user_img_uri:String )
 
 
 // XML sources
-// Rounded input fields on activity_main.xml & activity_login.xml
+// Rounded input fields in activity_register.xml & activity_login.xml
 // https://stackoverflow.com/questions/3646415/how-to-create-edittext-with-rounded-corners
+
+// Format images in round shape in activity_register.xml
+// https://github.com/hdodenhof/CircleImageView
 
 

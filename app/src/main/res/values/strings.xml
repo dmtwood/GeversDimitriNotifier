@@ -10,4 +10,6 @@
     <string name="log_in">Log in</string>
     <string name="sign_in">Sign in</string>
     <string name="back_to_registration">back to registration</string>
+    <string name="signout">signout</string>
+    <string name="notify">Notify</string>
 </resources>

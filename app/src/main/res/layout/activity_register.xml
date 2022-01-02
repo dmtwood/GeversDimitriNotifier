@@ -47,6 +47,7 @@
         android:src="@drawable/image_style"
         android:translationZ="100dp"
         app:civ_border_width="4dp"
+        app:civ_border_color="@android:color/holo_blue_dark"
         app:layout_constraintBottom_toBottomOf="@+id/image_upload_button_registerform"
         app:layout_constraintEnd_toEndOf="@+id/image_upload_button_registerform"
         app:layout_constraintStart_toStartOf="@+id/image_upload_button_registerform"
