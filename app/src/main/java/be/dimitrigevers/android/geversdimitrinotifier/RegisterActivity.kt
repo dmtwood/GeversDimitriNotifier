@@ -123,13 +123,15 @@ class RegisterActivity : AppCompatActivity() {
         }
         val imageName = UUID.randomUUID().toString()
         val imageRef = FirebaseStorage.getInstance().getReference("/images/$imageName")
-            .putFile(
-            selectedImageUri!!
-        )
+        imageRef.putFile( selectedImageUri!! )
             .addOnSuccessListener {
                 Log.d(LOG_TAG, "Image upload was succesfull: ${it.metadata?.path}")
 
-                userToFirebaseDB(it.toString())
+                imageRef.downloadUrl.addOnSuccessListener {
+                    Log.d(LOG_TAG, "Image upload succesfull at $it")
+                    userToFirebaseDB(it.toString())
+                }
+
             }
             .addOnFailureListener {
                 Log.d(LOG_TAG, "Failed to set value to database: ${it.message}")
@@ -139,13 +141,15 @@ class RegisterActivity : AppCompatActivity() {
         // storageRef.putFile(selectedImageUri!!)
     }
 
-    private fun userToFirebaseDB(user_img_uri:String) {
-        Log.d(LOG_TAG, "trying to store user to db")
+    private fun userToFirebaseDB(userImgUri:String) {
+        Log.d(LOG_TAG, "trying to store user to db with img uri ${userImgUri.toString()}" )
         val uid = FirebaseAuth.getInstance().uid?: ""
-        val dbReference = FirebaseDatabase.getInstance().getReference("/users/$uid")
+        val db = FirebaseDatabase.getInstance("https://geversdimitrinotifier-default-rtdb.europe-west1.firebasedatabase.app")
+        val dbReference = db.getReference("/users/$uid")
+
         val username = findViewById<EditText>(R.id.username_edittext_registerform).text.toString()
-        val userToStore = User(uid, username, user_img_uri)
-        Log.d(LOG_TAG, "trying to store user: ${userToStore.uid}")
+        val userToStore = User(uid, username, userImgUri.toString())
+        Log.d(LOG_TAG, "trying to store user: ${dbReference.root}")
 
         dbReference.setValue(userToStore)
             .addOnSuccessListener {
@@ -154,13 +158,13 @@ class RegisterActivity : AppCompatActivity() {
             .addOnFailureListener {
                 Log.d(LOG_TAG, "Failed to save user to database")
             }
-        Log.d(LOG_TAG, "passed setValue to store user: ${userToStore.username}")
+        Log.d(LOG_TAG, "passed setValue to store user: ${userToStore.userName}")
 
     }
 
 }
 
-class User(val uid:String, val username:String, val user_img_uri:String )
+class User(val uid:String, val userName:String, val user_img_uri:String )
 
 
 // XML sources
