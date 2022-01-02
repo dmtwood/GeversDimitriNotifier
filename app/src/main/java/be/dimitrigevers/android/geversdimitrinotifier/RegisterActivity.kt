@@ -11,10 +11,11 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_register.*
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.provider.MediaStore
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.launch
@@ -30,7 +31,7 @@ class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_register)
         auth = Firebase.auth
         val registerButton = findViewById<Button>(R.id.register_button_registerform)
         registerButton.setOnClickListener {
@@ -58,8 +59,12 @@ class RegisterActivity : AppCompatActivity() {
                 Log.d(LOG_TAG, "selected img is null")
                 return
             }
-            val image_bitmap = uriToBitmap(selectedImageUri!!)
+            val imageForUpload = MediaStore.Images.Media.getBitmap(contentResolver, selectedImageUri)
+            // val imageForUpload = uriToBitmap(selectedImageUri!!)
+
             // to do - show image in ui
+            image_for_upload_registerform.setImageBitmap(imageForUpload)
+//            image_for_upload_registerform.alpha = 0f
         }
     }
 

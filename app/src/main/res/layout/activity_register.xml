@@ -39,6 +39,19 @@
         app:layout_constraintStart_toStartOf="@+id/email_input_registerform"
         app:layout_constraintTop_toBottomOf="@+id/email_input_registerform" />
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/image_for_upload_registerform"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:rotation="0"
+        android:src="@drawable/image_style"
+        android:translationZ="100dp"
+        app:civ_border_width="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/image_upload_button_registerform"
+        app:layout_constraintEnd_toEndOf="@+id/image_upload_button_registerform"
+        app:layout_constraintStart_toStartOf="@+id/image_upload_button_registerform"
+        app:layout_constraintTop_toBottomOf="@+id/register_title" />
+
     <Button
         android:id="@+id/image_upload_button_registerform"
         android:layout_width="150dp"
@@ -56,6 +69,8 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 
     <EditText
         android:id="@+id/username_edittext_registerform"
