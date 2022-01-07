@@ -173,7 +173,9 @@ class RegisterActivity : AppCompatActivity() {
 
 }
 
-class User(val uid:String, val userName:String, val user_img_uri:String )
+class User(val uid:String, val userName:String, val user_img_uri:String ) {
+    constructor(): this("", "", "")
+}
 
 
 // XML sources
