@@ -27,6 +27,9 @@ class NotifyActivity : AppCompatActivity() {
         fetchContacts()
     }
 
+    companion object {
+        val CONTACT_KEY = "CONTACT_KEY"
+    }
     private fun fetchContacts() {
         val dbRef = FirebaseDatabase
             .getInstance("https://geversdimitrinotifier-default-rtdb.europe-west1.firebasedatabase.app/")
@@ -48,7 +51,13 @@ class NotifyActivity : AppCompatActivity() {
 
                 contactsAdapter.setOnItemClickListener { item, myParentView ->
 
+                    val contactItem = item as ContactItem
+
                     val messageLogIntent = Intent(myParentView.context, MessageLogActivity::class.java)
+                    // needs a parcelable object,
+                    // annotate the model class and in buid.gradle set
+                    // androidExtensions { experimental = true }
+                    messageLogIntent.putExtra(CONTACT_KEY, contactItem.contact)
                     startActivity(messageLogIntent)
 
                     finish()
@@ -63,7 +72,7 @@ class NotifyActivity : AppCompatActivity() {
     }
 }
 
-class ContactItem(private val contact: User): Item<ViewHolder>() {
+class ContactItem(val contact: User): Item<ViewHolder>() {
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
         // run for each contact in list
