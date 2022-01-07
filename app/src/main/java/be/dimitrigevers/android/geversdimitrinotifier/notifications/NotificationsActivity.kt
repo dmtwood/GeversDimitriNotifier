@@ -1,10 +1,12 @@
-package be.dimitrigevers.android.geversdimitrinotifier
+package be.dimitrigevers.android.geversdimitrinotifier.notifications
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import be.dimitrigevers.android.geversdimitrinotifier.R
+import be.dimitrigevers.android.geversdimitrinotifier.auth.RegisterActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class NotificationsActivity : AppCompatActivity() {
@@ -27,7 +29,7 @@ class NotificationsActivity : AppCompatActivity() {
 
     // CREATE MENU-ITEMS
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.nav_bar ,menu)
+        menuInflater.inflate(R.menu.nav_bar,menu)
         return super.onCreateOptionsMenu(menu)
     }
 

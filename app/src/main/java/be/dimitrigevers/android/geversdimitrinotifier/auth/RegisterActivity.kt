@@ -1,4 +1,4 @@
-package be.dimitrigevers.android.geversdimitrinotifier
+package be.dimitrigevers.android.geversdimitrinotifier.auth
 
 import android.app.Activity
 import android.content.Intent
@@ -16,6 +16,9 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.provider.MediaStore
+import be.dimitrigevers.android.geversdimitrinotifier.R
+import be.dimitrigevers.android.geversdimitrinotifier.User
+import be.dimitrigevers.android.geversdimitrinotifier.notifications.NotificationsActivity
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.launch
@@ -173,9 +176,6 @@ class RegisterActivity : AppCompatActivity() {
 
 }
 
-class User(val uid:String, val userName:String, val user_img_uri:String ) {
-    constructor(): this("", "", "")
-}
 
 
 // XML sources

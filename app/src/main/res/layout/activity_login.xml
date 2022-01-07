@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFEB3B">
+    android:background="@android:color/holo_red_dark">
 
     <TextView
         android:id="@+id/textView"
@@ -13,6 +13,9 @@
         android:layout_marginTop="16dp"
         android:gravity="center_horizontal"
         android:text="@string/log_in"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,7 +24,7 @@
     <EditText
         android:id="@+id/email_input_loginform"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="32dp"
@@ -29,12 +32,12 @@
         android:layout_marginRight="16dp"
         android:width="250dp"
         android:background="@drawable/rounded_edittext"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingStart="20dp"
-        android:textSize="20sp"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
+        android:paddingStart="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +46,7 @@
     <EditText
         android:id="@+id/password_input_loginform"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginTop="32dp"
         android:width="250dp"
         android:background="@drawable/rounded_edittext"
@@ -61,10 +64,12 @@
     <Button
         android:id="@+id/login_button_loginform"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/button_style"
         android:text="@string/sign_in"
+        android:textColor="@android:color/white"
+
         app:layout_constraintEnd_toEndOf="@+id/password_input_loginform"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="@+id/password_input_loginform"
@@ -75,9 +80,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:textColor="@color/purple_500"
-        android:textStyle="bold"
         android:text="@string/back_to_registration"
+        android:textColor="@color/browser_actions_bg_grey"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/login_button_loginform"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="@+id/login_button_loginform"

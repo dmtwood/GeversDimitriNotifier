@@ -1,8 +1,11 @@
-package be.dimitrigevers.android.geversdimitrinotifier
+package be.dimitrigevers.android.geversdimitrinotifier.notifications
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import be.dimitrigevers.android.geversdimitrinotifier.R
+import be.dimitrigevers.android.geversdimitrinotifier.User
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -16,20 +19,23 @@ import kotlinx.android.synthetic.main.activity_notify.*
 import kotlinx.android.synthetic.main.users_in_notify_list.view.*
 
 class NotifyActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notify)
         supportActionBar?.title = "Choose contact"
         fetchContacts()
     }
+
     private fun fetchContacts() {
-        Log.d("jefke", "in fetchContacts()")
         val dbRef = FirebaseDatabase
             .getInstance("https://geversdimitrinotifier-default-rtdb.europe-west1.firebasedatabase.app/")
             .getReference("/users")
-        Log.d("jefke", dbRef.toString())
+
         // values from Firebase Database in Kotlin? https://stackoom.com/en/question/4PIJp
         dbRef.addListenerForSingleValueEvent(object:ValueEventListener {
+
+            // USE RECYCLERVIEW WITH CONTACTS ADAPTER TO POPULATE THE CONTACT LIST
             override fun onDataChange(p0: DataSnapshot) {
                 val contactsAdapter = GroupAdapter<ViewHolder>()
                 p0.children.forEach{
@@ -37,18 +43,28 @@ class NotifyActivity : AppCompatActivity() {
                     if (contact != null) {
                         contactsAdapter.add(ContactItem(contact))
                     }
-                    Log.d("jefke", it.toString())
+                    Log.d("Notify contact list: ", it.toString())
                 }
+
+                contactsAdapter.setOnItemClickListener { item, myParentView ->
+
+                    val messageLogIntent = Intent(myParentView.context, MessageLogActivity::class.java)
+                    startActivity(messageLogIntent)
+
+                    finish()
+                }
+
                 notify_recyclerview.adapter = contactsAdapter
             }
+
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
             }
         })
     }
 }
 
 class ContactItem(private val contact: User): Item<ViewHolder>() {
+
     override fun bind(viewHolder: ViewHolder, position: Int) {
         // run for each contact in list
         viewHolder.itemView.user_in_notify_list_name.text = contact.userName
@@ -59,5 +75,4 @@ class ContactItem(private val contact: User): Item<ViewHolder>() {
     override fun getLayout(): Int {
         return R.layout.users_in_notify_list
     }
-
 }

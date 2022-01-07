@@ -1,11 +1,11 @@
-package be.dimitrigevers.android.geversdimitrinotifier
+package be.dimitrigevers.android.geversdimitrinotifier.auth
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
+import be.dimitrigevers.android.geversdimitrinotifier.R
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 

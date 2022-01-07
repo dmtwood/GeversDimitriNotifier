@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NotifyActivity">
+    tools:context=".notifications.NotifyActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notify_recyclerview"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="12dp"
+        android:background="@android:color/holo_red_dark"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
