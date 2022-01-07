@@ -153,17 +153,15 @@ class RegisterActivity : AppCompatActivity() {
 
         val username = findViewById<EditText>(R.id.username_edittext_registerform).text.toString()
         val userToStore = User(uid, username, userImgUri.toString())
-        Log.d(LOG_TAG, "trying to store user: ${dbReference.root}")
 
         dbReference.setValue(userToStore)
             .addOnSuccessListener {
                 Log.d(LOG_TAG, "User saved successfully in Firestore")
-
                 val notificationsIntent = Intent(this, NotificationsActivity::class.java)
                 // clear out stack
                 notificationsIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
 
-
+                    /* AFTER SUCCESSFUL USER CREATION, GO TO NOTIFICATIONS PAGE */
                 startActivity(notificationsIntent)
             }
             .addOnFailureListener {
@@ -185,4 +183,5 @@ class User(val uid:String, val userName:String, val user_img_uri:String )
 // Format images in round shape in activity_register.xml
 // https://github.com/hdodenhof/CircleImageView
 
-
+// Groupie is a simple, flexible library for complex RecyclerView layout
+// https://github.com/lisawray/groupie

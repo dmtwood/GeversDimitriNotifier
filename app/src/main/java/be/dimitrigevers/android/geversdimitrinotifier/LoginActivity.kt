@@ -32,6 +32,7 @@ class LoginActivity : AppCompatActivity() {
                     Log.d("Main", "User logged in with uid: ${it.result?.user?.uid}")
                     Toast.makeText(this, "Logged in succesfully", Toast.LENGTH_SHORT).show()
 
+                        // redirect to message activity
                 }
                 .addOnFailureListener {
                     Log.d("Main", "Login failed")

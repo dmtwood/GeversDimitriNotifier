@@ -15,6 +15,7 @@ class NotificationsActivity : AppCompatActivity() {
         loginVerification()
     }
 
+    // VERIFY IF USER IS LOGGED IN
     private fun loginVerification() {
         val uid = FirebaseAuth.getInstance().uid
         if (uid == null) {
@@ -24,11 +25,13 @@ class NotificationsActivity : AppCompatActivity() {
         }
     }
 
+    // CREATE MENU-ITEMS
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.nav_bar ,menu)
         return super.onCreateOptionsMenu(menu)
     }
 
+    // MAP MENU-ITEMS NEW & SIGN-OUT TO INTENTS
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.navbar_new_message -> {
