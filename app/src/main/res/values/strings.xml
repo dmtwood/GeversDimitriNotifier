@@ -14,4 +14,6 @@
     <string name="notify">Notify</string>
     <string name="contact">Contact</string>
     <string name="message">message</string>
+    <string name="type_message">Type message</string>
+    <string name="send">send</string>
 </resources>

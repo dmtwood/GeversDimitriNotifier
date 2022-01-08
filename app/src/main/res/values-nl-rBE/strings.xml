@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">App_naam</string>
+    <string name="name">Naam</string>
+    <string name="register">Registreer</string>
+    <string name="password">Paswoord</string>
+    <string name="image">Foto</string>
+    <string name="email">Email</string>
+    <string name="already_registered_log_in_here">Al geregistreerd? Log hier in.</string>
+    <string name="sign_up">Doe mee</string>
+    <string name="log_in">Log in</string>
+    <string name="sign_in">Meld aan</string>
+    <string name="back_to_registration">terug naar registrereren</string>
+    <string name="signout">Meld af</string>
+    <string name="notify">Stuur</string>
+    <string name="contact">Contact</string>
+    <string name="message">Bericht</string>
+    <string name="type_message">Type uw bericht</string>
+    <string name="send">stuur</string>
+</resources>
