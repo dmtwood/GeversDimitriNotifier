@@ -41,7 +41,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="12dp"
-        android:background="@android:color/holo_red_dark"
+        android:background="@android:color/holo_blue_bright"
         app:layout_constraintBottom_toTopOf="@+id/message_log_input_field"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

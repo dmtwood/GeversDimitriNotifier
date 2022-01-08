@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_red_dark"
+    android:background="@android:color/holo_blue_light"
     tools:context=".auth.RegisterActivity">
 
 
@@ -121,11 +121,11 @@
 
     <Button
         android:id="@+id/register_button_registerform"
-        android:textColor="@color/white"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/button_style"
+        android:textColor="@color/white"
         android:text="@string/sign_up"
         app:layout_constraintEnd_toEndOf="@+id/password_input_registerform"
         app:layout_constraintHorizontal_bias="0.0"

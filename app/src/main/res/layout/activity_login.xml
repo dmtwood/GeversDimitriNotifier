@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_red_dark">
+    android:background="@android:color/holo_blue_light">
 
     <TextView
         android:id="@+id/textView"
@@ -65,13 +65,12 @@
         android:id="@+id/login_button_loginform"
         android:layout_width="0dp"
         android:layout_height="48dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/button_style"
         android:text="@string/sign_in"
         android:textColor="@android:color/white"
-
         app:layout_constraintEnd_toEndOf="@+id/password_input_loginform"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/password_input_loginform"
         app:layout_constraintTop_toBottomOf="@+id/password_input_loginform" />
 
