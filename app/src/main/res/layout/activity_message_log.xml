@@ -16,7 +16,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="Type message"
+        android:hint="Type message"
         app:layout_constraintBottom_toBottomOf="@+id/message_log_send_button"
         app:layout_constraintEnd_toStartOf="@+id/message_log_send_button"
         app:layout_constraintTop_toTopOf="@+id/message_log_send_button"

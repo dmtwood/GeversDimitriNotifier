@@ -6,11 +6,13 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import androidx.recyclerview.widget.DividerItemDecoration
 import be.dimitrigevers.android.geversdimitrinotifier.R
 import be.dimitrigevers.android.geversdimitrinotifier.User
 import be.dimitrigevers.android.geversdimitrinotifier.auth.RegisterActivity
 import be.dimitrigevers.android.geversdimitrinotifier.models.Notification
 import be.dimitrigevers.android.geversdimitrinotifier.models.itemviewholders.NotificationsLine
+import be.dimitrigevers.android.geversdimitrinotifier.notifications.MessageLogActivity.Companion.MESSAGE_TAG
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.xwray.groupie.GroupAdapter
@@ -28,6 +30,15 @@ class NotificationsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notifications)
+        notifications_recyclerview.adapter = notificationsAdapter
+        notifications_recyclerview.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+        notificationsAdapter.setOnItemClickListener { item, view ->
+            Log.d(MESSAGE_TAG, "notificationsapdter - on click message")
+            val messageLogIntent = Intent(this, MessageLogActivity::class.java)
+            val notificationLine = item as NotificationsLine
+            messageLogIntent.putExtra(NotifyActivity.CONTACT_KEY, notificationLine.contact )
+            startActivity(messageLogIntent)
+        }
         fetchUser()
         loginVerification()
         fetchNotifications()
@@ -59,8 +70,8 @@ class NotificationsActivity : AppCompatActivity() {
         dbRefUsers.addListenerForSingleValueEvent( object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 currentUser = snapshot.getValue(User::class.java)
-                Log.d(MessageLogActivity.MESSAGE_TAG, "in on data change")
-                Log.d(MessageLogActivity.MESSAGE_TAG, "current user in fetchUser(): ${currentUser?.userName}")
+                Log.d(MESSAGE_TAG, "in on data change")
+                Log.d(MESSAGE_TAG, "current user in fetchUser(): ${currentUser?.userName}")
             }
             override fun onCancelled(error: DatabaseError) {
             }
@@ -94,23 +105,15 @@ class NotificationsActivity : AppCompatActivity() {
 
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 val notification = snapshot.getValue(Notification::class.java) ?: return
-                Log.d("NOTIFICATIONSLOGGER", "snapshot message for hashmap: ${notification.message}")
-
-
-                // currentNotifications["test"] = Notification("1", "test", "test", "test", 100L)
+                Log.d(MESSAGE_TAG, "snapshot message for hashmap: ${notification.message}")
                 currentNotifications[snapshot.key!!] = notification //= notification
-                // currentNotifications[snapshot.toString()] = notification
-                // currentNotifications[snapshot.key] = notification
-                // notificationsAdapter.add(NotificationsLine(notification))
-                Log.d("NOTIFICATIONSLOGGER", "full hashmap hashmap: ${currentNotifications.keys}")
-                Log.d("NOTIFICATIONSLOGGER", "line in on child added to hashmap: ${currentNotifications["test"]}")
                 refreshNotifications()
             }
 
             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
                 val notification = snapshot.getValue(Notification::class.java) ?: return
                 currentNotifications[snapshot?.key.toString()] = notification
-                Log.d("NOTIFICATIONSLOGGER", "line in on child changed to hashmap: ${currentNotifications[snapshot.key!!]}")
+                Log.d(MESSAGE_TAG, "line in on child changed to hashmap: ${currentNotifications[snapshot.key!!]}")
 
                 refreshNotifications()
             }
@@ -131,7 +134,7 @@ class NotificationsActivity : AppCompatActivity() {
         currentNotifications.values.forEach{
             notificationsAdapter.add(NotificationsLine(it))
             if (it != null) {
-                Log.d("NOTIFICATIONSLOGGER", "line in refresh notifications: ${it.message}")
+                Log.d(MESSAGE_TAG, "line in refresh notifications: ${it.message}")
             }
         }
     }

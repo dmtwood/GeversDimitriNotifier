@@ -78,8 +78,8 @@ class MessageLogActivity : AppCompatActivity() {
     }
 
     private fun listenForNotifications() {
-        val fromId = FirebaseAuth.getInstance().uid
         val toId = toUser?.uid
+        val fromId = FirebaseAuth.getInstance().uid
         val dbRefToNotifications = FirebaseDatabase
             .getInstance("https://geversdimitrinotifier-default-rtdb.europe-west1.firebasedatabase.app/")
             .getReference("/user-notifications/$fromId/$toId")
@@ -90,7 +90,7 @@ class MessageLogActivity : AppCompatActivity() {
                 Log.d(MESSAGE_TAG, "to User in child added: ${toUser!!.userName}")
                 val notification = snapshot.getValue(Notification::class.java)
                 if (notification != null) {
-                    Log.d(MESSAGE_TAG, notification.message.toString() )
+                    Log.d(MESSAGE_TAG, notification.message )
                     Log.d(MESSAGE_TAG, "from User: ${notification.fromId}")
                     Log.d(MESSAGE_TAG, "logged User: ${FirebaseAuth.getInstance().uid}")
                     // check if the message is from the logged in user
@@ -106,6 +106,7 @@ class MessageLogActivity : AppCompatActivity() {
                         messageLogAdapter.add(MessageToLine(notification.message, toUser!!))
                     }
                 }
+                message_log_recyclerview.scrollToPosition(messageLogAdapter.itemCount - 1)
             }
             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
             }

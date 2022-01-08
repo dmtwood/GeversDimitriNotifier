@@ -19,8 +19,10 @@
         app:layout_constraintStart_toEndOf="@+id/notifications_row_image"
         app:layout_constraintTop_toBottomOf="@+id/notifications_row_contact" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/notifications_row_image"
+        app:civ_border_color="@android:color/holo_blue_dark"
+        app:civ_border_width="4dp"
         android:layout_width="96dp"
         android:layout_height="96dp"
         android:layout_marginStart="16dp"
