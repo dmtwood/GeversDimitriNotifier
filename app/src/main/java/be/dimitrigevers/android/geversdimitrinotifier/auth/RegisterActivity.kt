@@ -103,7 +103,6 @@ class RegisterActivity : AppCompatActivity() {
         }
         Log.d(LOG_TAG, "Username: " + username)
         Log.d(LOG_TAG, "Email: " + email_input)
-        Log.d(LOG_TAG, "Password: " + password_input)
 
         /* --- CREATE FIREBASE AUTHENTICATION --- */
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email_input, password_input)

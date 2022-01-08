@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import be.dimitrigevers.android.geversdimitrinotifier.R
 import be.dimitrigevers.android.geversdimitrinotifier.User
+import be.dimitrigevers.android.geversdimitrinotifier.models.itemviewholders.ContactItem
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -19,6 +20,9 @@ import kotlinx.android.synthetic.main.activity_notify.*
 import kotlinx.android.synthetic.main.users_in_notify_list.view.*
 
 class NotifyActivity : AppCompatActivity() {
+    companion object {
+        val CONTACT_KEY = "CONTACT_KEY"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,9 +31,6 @@ class NotifyActivity : AppCompatActivity() {
         fetchContacts()
     }
 
-    companion object {
-        val CONTACT_KEY = "CONTACT_KEY"
-    }
     private fun fetchContacts() {
         val dbRef = FirebaseDatabase
             .getInstance("https://geversdimitrinotifier-default-rtdb.europe-west1.firebasedatabase.app/")
@@ -48,21 +49,15 @@ class NotifyActivity : AppCompatActivity() {
                     }
                     Log.d("Notify contact list: ", it.toString())
                 }
-
                 contactsAdapter.setOnItemClickListener { item, myParentView ->
-
                     val contactItem = item as ContactItem
-
                     val messageLogIntent = Intent(myParentView.context, MessageLogActivity::class.java)
                     // needs a parcelable object,
-                    // annotate the model class and in buid.gradle set
-                    // androidExtensions { experimental = true }
+                    // annotate the model class and in buid.gradle set androidExtensions { experimental = true }
                     messageLogIntent.putExtra(CONTACT_KEY, contactItem.contact)
                     startActivity(messageLogIntent)
-
                     finish()
                 }
-
                 notify_recyclerview.adapter = contactsAdapter
             }
 
@@ -72,16 +67,4 @@ class NotifyActivity : AppCompatActivity() {
     }
 }
 
-class ContactItem(val contact: User): Item<ViewHolder>() {
 
-    override fun bind(viewHolder: ViewHolder, position: Int) {
-        // run for each contact in list
-        viewHolder.itemView.user_in_notify_list_name.text = contact.userName
-        // https://www.tutorialspoint.com/how-do-i-load-an-image-by-url-using-picasso-library-on-kotlin
-        Picasso.get().load(contact.user_img_uri).into(viewHolder.itemView.user_in_notify_list_image)
-    }
-
-    override fun getLayout(): Int {
-        return R.layout.users_in_notify_list
-    }
-}
