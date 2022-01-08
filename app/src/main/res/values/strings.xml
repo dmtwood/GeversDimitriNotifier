@@ -12,4 +12,6 @@
     <string name="back_to_registration">back to registration</string>
     <string name="signout">signout</string>
     <string name="notify">Notify</string>
+    <string name="contact">Contact</string>
+    <string name="message">message</string>
 </resources>
