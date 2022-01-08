@@ -20,6 +20,11 @@ class MessageLogActivity : AppCompatActivity() {
             supportActionBar?.title = user.userName
         }
 
+        populateMessageLog()
+
+
+    }
+    private fun populateMessageLog() {
         val contactAdapter = GroupAdapter<ViewHolder>()
 
         contactAdapter.add(MessageFromLine())
@@ -27,9 +32,9 @@ class MessageLogActivity : AppCompatActivity() {
         contactAdapter.add(MessageFromLine())
 
         message_log_recyclerview.adapter = contactAdapter
-
     }
 }
+
 
 class MessageFromLine: Item<ViewHolder>() {
     override fun bind(viewHolder: ViewHolder, position: Int) {
