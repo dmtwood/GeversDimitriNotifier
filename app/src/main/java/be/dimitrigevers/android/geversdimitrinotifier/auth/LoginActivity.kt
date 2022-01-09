@@ -1,11 +1,13 @@
 package be.dimitrigevers.android.geversdimitrinotifier.auth
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
 import be.dimitrigevers.android.geversdimitrinotifier.R
+import be.dimitrigevers.android.geversdimitrinotifier.notifications.NotificationsActivity
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
@@ -33,7 +35,12 @@ class LoginActivity : AppCompatActivity() {
                     Log.d("Main", "User logged in with uid: ${it.result?.user?.uid}")
                     Toast.makeText(this, "Logged in succesfully", Toast.LENGTH_SHORT).show()
 
-                        // redirect to message activity
+                    val notificationsIntent = Intent(this, NotificationsActivity::class.java)
+                    // clear out stack
+                    notificationsIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+
+                    // redirect to message activity
+                    startActivity(notificationsIntent)
                 }
                 .addOnFailureListener {
                     Log.d("Main", "Login failed")
