@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
 import be.dimitrigevers.android.geversdimitrinotifier.R
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 

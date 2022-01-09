@@ -1,1 +1,0 @@
-package be.dimitrigevers.android.geversdimitrinotifier.adapters

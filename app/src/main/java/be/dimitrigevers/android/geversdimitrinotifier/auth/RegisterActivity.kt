@@ -50,6 +50,16 @@ class RegisterActivity : AppCompatActivity() {
             imageIntent.type = "image/*"
             startActivityForResult(imageIntent, 0)
         }
+        privacy_fragment_button_registry.setOnClickListener {
+            val privacyFragment = PrivacyFragment()
+            showPrivacyFragment(privacyFragment)
+        }
+    }
+
+    private fun showPrivacyFragment(privacyFragment: PrivacyFragment) {
+        val privacyFrameMgr = supportFragmentManager.beginTransaction()
+        privacyFrameMgr.replace(R.id.privacy_fragment, privacyFragment)
+        privacyFrameMgr.commit()
     }
 
     var selectedImageUri: Uri? = null

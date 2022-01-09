@@ -7,32 +7,66 @@
     android:background="@android:color/holo_blue_light"
     tools:context=".auth.RegisterActivity">
 
+    <TextView
+        android:id="@+id/login_link_registerform"
+        android:layout_width="83dp"
+        android:layout_height="99dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/already_registered_log_in_here"
+        android:textColor="@color/browser_actions_bg_grey"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/register_title"
+        app:layout_constraintHorizontal_bias="0.82"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_title" />
+
     <FrameLayout
-        android:id="@+id/fragment_main"
+        android:id="@+id/privacy_fragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="176dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/password_input_registerform"
-        app:layout_constraintStart_toStartOf="@+id/register_button_registerform"
-        app:layout_constraintTop_toBottomOf="@+id/image_for_upload_registerform">
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/password_input_registerform"
+        app:layout_constraintTop_toBottomOf="@+id/password_input_registerform"
+        app:layout_constraintVertical_bias="1.0" />
 
-        <Button
-            android:id="@+id/btn_show"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:layout_weight="0.9"
-            android:text="@string/read_privacy_policy"
-            android:background="@drawable/image_style"
-            android:textColor="@android:color/holo_orange_light" />
-    </FrameLayout>
+    <Button
+
+        android:id="@+id/privacy_fragment_button_registry"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_weight="0.9"
+        android:background="@drawable/image_style"
+        android:text="@string/read_privacy_policy"
+        android:textColor="@android:color/holo_orange_light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_input_registerform" />
+
+    <Button
+        android:id="@+id/register_button_registerform"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/button_style"
+        android:text="@string/sign_up"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_input_registerform" />
 
     <TextView
         android:id="@+id/register_title"
         android:layout_width="100dp"
         android:layout_height="34dp"
-        android:layout_marginBottom="164dp"
+        android:layout_marginTop="12dp"
         android:gravity="center_horizontal"
         android:text="@string/register"
         android:textAlignment="center"
@@ -40,14 +74,16 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/username_edittext_registerform"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.167"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/password_input_registerform"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:width="250dp"
         android:background="@drawable/rounded_edittext"
         android:hint="@string/password"
@@ -73,13 +109,14 @@
         app:layout_constraintStart_toStartOf="@+id/image_upload_button_registerform"
         app:layout_constraintTop_toBottomOf="@+id/register_title" />
 
+
     <Button
         android:id="@+id/image_upload_button_registerform"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="@drawable/image_style"
@@ -87,10 +124,9 @@
         android:textColor="@android:color/white"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.739"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <EditText
         android:id="@+id/username_edittext_registerform"
@@ -98,7 +134,7 @@
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:width="250dp"
@@ -115,7 +151,7 @@
         android:id="@+id/email_input_registerform"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:width="250dp"
         android:background="@drawable/rounded_edittext"
         android:hint="@string/email"
@@ -126,31 +162,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/username_edittext_registerform"
         app:layout_constraintTop_toBottomOf="@+id/username_edittext_registerform" />
-
-    <Button
-        android:id="@+id/register_button_registerform"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="64dp"
-        android:background="@drawable/button_style"
-        android:text="@string/sign_up"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/password_input_registerform"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/password_input_registerform"
-        app:layout_constraintTop_toBottomOf="@+id/password_input_registerform" />
-
-    <TextView
-        android:id="@+id/login_link_registerform"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/already_registered_log_in_here"
-        android:textColor="@color/browser_actions_bg_grey"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/register_button_registerform"
-        app:layout_constraintStart_toStartOf="@+id/register_button_registerform"
-        app:layout_constraintTop_toBottomOf="@+id/register_button_registerform" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,4 +17,6 @@
     <string name="message">Bericht</string>
     <string name="type_message">Type uw bericht</string>
     <string name="send">stuur</string>
+    <string name="read_privacy_policy">lees gegevens beleid</string>
+    <string name="by_using_this_app_you_give_us_permission_to_store_your_user_data_we_will_never_share_these_with_third_parties">Door deze app te gebruiken, geeft u toestemming om uw gegevens te bewaren. We delen niets met derden.</string>
 </resources>
