@@ -3,7 +3,7 @@
 
 De Notifier is een applicatie waar gebruikers kunnen registreren en inloggen.
 
-Ze kunnen vervolgens nieuwe notificaties bekijken en selecteren of een gebruiker selecteren uit een lijst. 
+Ze kunnen vervolgens nieuwe notificaties bekijken en selecteren of een contact selecteren uit een contactenlijst. 
 Daarna komen ze op een scherm waar de persoonlijke berichten met de geselecteerde gebruiker verschijnen en de mogelijkheid is om nieuwe notificaties te verzenden.
 
 - Dit wordt bewerkstelligd met 5 activities waartussen informatie wordt uitgewisseld met behulp van Intents.
