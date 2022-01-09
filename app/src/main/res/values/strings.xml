@@ -16,4 +16,6 @@
     <string name="message">message</string>
     <string name="type_message">Type message</string>
     <string name="send">send</string>
+    <string name="read_privacy_policy">read privacy policy</string>
+    <string name="by_using_this_app_you_give_us_permission_to_store_your_user_data_we_will_never_share_these_with_third_parties">By using this app, you give us permission to store your user data. We will never share these with third-parties.</string>
 </resources>

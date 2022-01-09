@@ -7,6 +7,26 @@
     android:background="@android:color/holo_blue_light"
     tools:context=".auth.RegisterActivity">
 
+    <FrameLayout
+        android:id="@+id/fragment_main"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="176dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/password_input_registerform"
+        app:layout_constraintStart_toStartOf="@+id/register_button_registerform"
+        app:layout_constraintTop_toBottomOf="@+id/image_for_upload_registerform">
+
+        <Button
+            android:id="@+id/btn_show"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_weight="0.9"
+            android:text="@string/read_privacy_policy"
+            android:background="@drawable/image_style"
+            android:textColor="@android:color/holo_orange_light" />
+    </FrameLayout>
 
     <TextView
         android:id="@+id/register_title"
@@ -107,6 +127,19 @@
         app:layout_constraintStart_toStartOf="@+id/username_edittext_registerform"
         app:layout_constraintTop_toBottomOf="@+id/username_edittext_registerform" />
 
+    <Button
+        android:id="@+id/register_button_registerform"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/button_style"
+        android:text="@string/sign_up"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/password_input_registerform"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/password_input_registerform"
+        app:layout_constraintTop_toBottomOf="@+id/password_input_registerform" />
+
     <TextView
         android:id="@+id/login_link_registerform"
         android:layout_width="wrap_content"
@@ -118,19 +151,6 @@
         app:layout_constraintEnd_toEndOf="@+id/register_button_registerform"
         app:layout_constraintStart_toStartOf="@+id/register_button_registerform"
         app:layout_constraintTop_toBottomOf="@+id/register_button_registerform" />
-
-    <Button
-        android:id="@+id/register_button_registerform"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/button_style"
-        android:textColor="@color/white"
-        android:text="@string/sign_up"
-        app:layout_constraintEnd_toEndOf="@+id/password_input_registerform"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/password_input_registerform"
-        app:layout_constraintTop_toBottomOf="@+id/password_input_registerform" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

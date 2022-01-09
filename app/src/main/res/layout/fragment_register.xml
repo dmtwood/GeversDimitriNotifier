@@ -4,4 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/privacy_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top|left"
+        android:text="@string/by_using_this_app_you_give_us_permission_to_store_your_user_data_we_will_never_share_these_with_third_parties"
+        android:textColor="#2a2a2a"
+        android:layout_margin="10dp"
+        android:padding="10dp"/>
+
 </LinearLayout>
