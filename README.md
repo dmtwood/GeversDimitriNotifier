@@ -34,4 +34,7 @@ Daarna komen ze op een scherm waar de persoonlijke berichten met de geselecteerd
 
 - In de RegisterActivity wordt m.b.v. een coroutine een tweede thread gemaakt om de afbeelding van de gebruiker naar de Firestore storage te sturen.
 
+Er zijn twee testusers aangemaakt waartussen al een communicatie is opgestart, om de interactie snel te kunnen testen in twee emulators of toestellen. testmale@test.be en testfemale@test.be kunnen inloggen met test12
+
+
 
